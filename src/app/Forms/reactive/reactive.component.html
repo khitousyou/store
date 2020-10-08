@@ -1,0 +1,47 @@
+
+<h1>Hello</h1>
+
+    <fieldset>
+        <legend>Formulaire</legend>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+          <div formGroupName="user">
+          <tr>
+              <label for="Name">Name :</label>
+              <input formControlName="name">
+              <span *ngIf="  userForm.touched  && name.errors?.required">Veuillez inserer un name .</span>
+              <span *ngIf="name.errors?.maxlength">max Number Attention {{name.errors?.maxlength.requiredLength}}</span>
+          </tr>
+   <!-- {{userForm.get('name').errors | json}} -->
+          <tr>
+              <label for="Prenom">Prenom : </label>
+              <input formControlName="prenom">
+          </tr>
+
+          <tr>
+              <label for="Age">Age : </label>
+              <input formControlName="age">
+              <span *ngIf=" age.touched && age.invalid">Veuillez saisir Age </span>
+              <!-- <span *ngIf=" age.touched && age.errors?.minlength.requiredLength">min valeur 4</span> -->
+              <span *ngIf=" age.touched && age.errors?.pattern">06 soit 07 </span>
+              <!-- {{age.errors | json}} -->
+          </tr>
+
+          <tr>
+              <label for="Email">Email : </label>
+              <input formControlName="email" required>
+             <ng-container *ngIf="email.touched">
+                <span *ngIf="email.errors?.required">Email Obligatoire</span>
+                <span *ngIf="email.errors?.email">Veuillesz inserer un email par exampe A@gmail.com</span>
+                <span *ngIf="email.errors?.existe">Cettte addrese exsite deja  </span>
+             </ng-container>
+             
+          </tr>
+        </div>
+          <button type="submit">Click hier</button>
+      </form>
+  
+    
+   
+  
+
+</fieldset>

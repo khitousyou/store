@@ -1,0 +1,13 @@
+input.ngrx-forms-invalid
+{
+    border: 2px solid purple;
+}
+
+input.ngrx-forms-touched{
+    background-color: blue;
+}
+
+input.ngrx-forms-invalid
+{
+    border: 2px solid palegreen;
+}

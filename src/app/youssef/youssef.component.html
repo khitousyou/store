@@ -1,0 +1,10 @@
+<form novalidate [ngrxFormState]="(formState$ | async)">
+    <input type="text"
+           [ngrxFormControlState]="(formState$ | async).controls.someTextInput">
+  
+    <input type="checkbox"
+           [ngrxFormControlState]="(formState$ | async).controls.someCheckbox">
+  
+    <input type="number"
+           [ngrxFormControlState]="(formState$ | async).controls.nested.controls.someNumber">
+  </form>

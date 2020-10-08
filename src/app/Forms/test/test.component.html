@@ -1,0 +1,65 @@
+
+<h1>Hello</h1>
+<form #khitous="ngForm" (ngSubmit)="onClick()">
+    <fieldset>
+        <legend>Formulaire</legend>
+        <div ngModelGroup="user" #user="ngModelGroup">
+
+            <tr>
+          
+                <label for="">Name</label>
+                <input  ngModel name="name" required #name="ngModel">
+                <span *ngIf=" name.touched && name.errors?.required">champ darori</span>
+                <span *ngIf=" name.touched && name.invalid">Veuillez inserer un name</span>
+             
+            </tr>
+
+            <tr>
+                <label for="">Age de Personnes</label>
+                <select name="age" ngModel>
+                    <option value="{{a}}" *ngFor="let a of tab">{{a}}</option>
+                </select>
+            </tr>
+
+            <tr>
+                <label for="">Prenom</label>
+                <input  ngModel name="prenom" required #prenom="ngModel">
+                <span *ngIf=" prenom.touched && prenom.errors?.required">Veuillez inserer un prenom</span>
+            </tr>
+            <span *ngIf="user.touched && user.invalid">Veuillez remplir les deux champ (name/prenom)</span>
+        </div>
+        
+  
+
+<tr>
+    <label for="">Email</label>
+    <input  ngModel name="email" #email="ngModel" required >
+    <ng-container *ngIf="email.touched">
+        <!-- <span *ngIf="email.errors?.required" style="color:red">champ email important</span> -->
+        <span *ngIf="email.errors?.invalid" style="color:red">A@gmail.com par example</span>
+    </ng-container>
+   
+    <!-- <span *ngIf="khitous.controls.email?.touched && khitous.controls.email?.errors?.required">Veuillez inserer une addresse email  </span>
+    <span *ngIf="khitous.controls.email?.touched && khitous.controls.email?.errors?.email">Veuillez inserer une addresse email valide. </span> -->
+
+</tr>
+       
+  
+    
+   
+    <button type="submit"  [disabled]="khitous.invalid">Click hier</button>
+    <button (click)="ngForm()">Set Form</button>
+    <button (click)="RestForm()" type="button">Rest Form</button>
+
+</fieldset>
+</form>
+
+
+<fieldset *ngIf="khitous.submitted">
+    <legend>Formulaire</legend>
+    <div><h2>Data Submited</h2></div>
+    <div>
+        <p>Name : {{ data.name }}</p>
+        <p>Prenom : {{data.prenom}}</p>
+    </div>
+    </fieldset>
